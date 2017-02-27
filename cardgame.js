@@ -12,19 +12,22 @@ var start = function() {
      message: "Please select the number of players.",
      choices: ["2", "3", "4"]
    }).then(function(answer) {
-       two(answer.options)
+       game(answer.options)
     })
 }
 
+// Global Variables
 var playerA = 0;
 var playerB = 0;
+var playerC = 0;
+var playerD = 0;
 var playerACardDraw = 0;
 var playerBCardDraw = 0;
 var playerScores = [0, 0, 0, 0];
 var cardDraw = [-2,-2,-2,-2];
 
 //Two Player function
-var two = function(numPlayers){
+var game = function(numPlayers){
   var usedDraws = [];
   for (var i = 0; i < numPlayers; i++) {
 
@@ -45,7 +48,7 @@ var two = function(numPlayers){
     
   }
 
-  console.log("Current Score: Player A-" + playerA + "|| Player B-" + playerB);
+  // console.log("Current Score: Player 1-" + playerA + "|| Player 2-" + playerB + "|| Player 3-" + playerC + "|| Player 4-" + playerD);
   winner();
   
 }
@@ -72,8 +75,7 @@ var two = function(numPlayers){
   // }
 var draw = function(i){
       var cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, "Joke's on you, Bats!", "Come on Bats, laugh it up", "Hello BatBreath!", "Makes you want to laugh, doesn't it?"];
-      chosenCard = cards[54];
-      // Math.floor(Math.random() * cards.length)];
+      chosenCard = cards[Math.floor(Math.random() * cards.length)];
       console.log("Player  " + (i+1) +"'s card: " + chosenCard);
       console.log("--------------------------------");
       if (typeof(chosenCard) === 'string') {
@@ -81,13 +83,15 @@ var draw = function(i){
       }
      return chosenCard;
     };
-var winner = function(){
-//   console.log(playerACardDraw);
-// console.log(playerBCardDraw);
-  var champion = cardDraw.indexOf(Math.max(...cardDraw));
-  if (cardDraw[0] == -1 && cardDraw[1] == -1 && cardDraw[2] == -1 && cardDraw[3] == -1) {
-    champion = 5; //all loser scrubs, git gud
 
+var winner = function(){
+  var champion = cardDraw.indexOf(Math.max(...cardDraw));
+  
+  if (cardDraw[0] == -1 && cardDraw[1] == -1 && cardDraw[2] == -1 && cardDraw[3] == -1) {
+    champion = 5;
+  }
+  if (cardDraw[0] == cardDraw[1] == cardDraw[2] == cardDraw[3]) {
+    champion = 5;
   }
   for (var i = 0; i < cardDraw.length; i++) {
     if (i==champion) {
@@ -96,11 +100,20 @@ var winner = function(){
       playerScores[i]--;
     }
   }
-console.log(champion+"a,"+cardDraw.toString());
+if (playerScores > 21) {
+    console.log("Winner Winner Chicken Dinner");
+    // start();
+  }
+console.log(playerScores);
+// console.log(champion+"a,"+cardDraw.toString());
   
-console.log("Current Score: Player A-" + playerA + "|| Player B-" + playerB);
+console.log("Current Score: Player 1-" + playerScores[0] + "|| Player 2-" + playerScores[1] + "|| Player 3-" + playerScores[2] + "|| Player 4-" + playerScores[3]);
 
+start();
 
+// var ultimate = function(){
+
+// }
 }
 
 
