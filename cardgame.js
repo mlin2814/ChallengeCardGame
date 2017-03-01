@@ -70,10 +70,14 @@ var winner = function(){
       playerScores[i]--;
     }
   }
-  //Handles winner of total match when score is 21 or greater
+  //Handles winner of total match when score is 21 or greater and has a two point lead
   for (var i = 0; i < playerScores.length; i++) {
     if (playerScores[i] > 20) {
-      console.log("Winner Winner Chicken Dinner: Player with " + playerScores[i] + " points!");
+      console.log("Winner Winner Chicken Dinner: Player with " + playerScores[i] + " points!"); 
+      for (var i = 0; i < playerScores.length; i++) {
+        if ((champion - playerScores[i]) < 2) {
+        }
+      }
     }
   }
   
