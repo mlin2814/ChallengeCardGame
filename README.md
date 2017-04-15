@@ -1,6 +1,6 @@
 # ChallengeCardGame
 
-A command line project that uses Javascript, Node.js, and a NOM package called Inquirer to have a 2-4 player card game.
+A command line project that uses Javascript, Node.js, and a NPM package called Inquirer to have a 2-4 player card game.
 
 Users will select the number of players they're starting the game with:
 ![Player Selection](https://raw.githubusercontent.com/mlin2814/ChallengeCardGame/master/assets/images/Screenshot%20(19).png)
